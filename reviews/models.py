@@ -1,6 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Avg, CheckConstraint, Q, UniqueConstraint
+from django.db.models import Avg, UniqueConstraint
 from django.utils import timezone
 
 from users.models import User
@@ -66,6 +66,7 @@ class Title(models.Model):
     def avg_score(self):
         return self.review_set.all().aggregate(Avg('score'))["score__avg"]
     rate = avg_score
+
     def __str__(self) -> str:
         return self.name
 

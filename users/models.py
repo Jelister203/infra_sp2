@@ -99,6 +99,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+        ordering = ('username',)
 
     @property
     def is_admin(self):
@@ -114,9 +115,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def is_user(self):
         """Проверка на наличие стандартных прав."""
         return self.role == self.user
-
-    class Meta:
-        ordering = ('username',)
 
     def __str__(self):
         return self.username
