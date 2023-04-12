@@ -14,7 +14,7 @@ services:
       - .env
   web:
     build:
-      context: ../api_yamdb
+      context: ../
       dockerfile: Dockerfile
     restart: always
     volumes:
