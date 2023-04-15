@@ -5,29 +5,9 @@
 Python 3.7
 Django 2.2.19
 ### Шаблон заполнения env-файла
-- Указываем, что работаем с PostgreSQL:
+- Заполните файл .env.template в директории infra/ данными, после чего, выполните команду:
 ```
-DB_ENGINE=django.db.backends.postgresql
-```
-- Указываем имя базы данных:
-```
-DB_NAME=postgres 
-```
-- Указываем логин для подключения к базе данных:
-```
-POSTGRES_USER=postgres
-```
-- Указываем пароль для подключения к БД:
-```
-POSTGRES_PASSWORD=postgres 
-```
-- Указываем название сервиса/контейнера:
-```
-DB_HOST=db 
-```
-- Указываем порт для подключения к БД:
-```
-DB_PORT=5432 
+cp infra/.env.template infra/.env
 ```
 ### Запуск проекта в dev-режиме
 - Скопировать репозиторий на локальную машину:
@@ -40,5 +20,16 @@ C:/.../infra_sp2/>cd infra
 ```
 - Выполнить команду:
 ```
-docker-compose up -d --build
+docker compose up -d --build
 ```
+### Имторт данных из фикстур
+- Поместить фикстуру в любой директории проекта, например, api_yamdb
+```
+...infra_sp2/api_yamdb/fixtures.json
+```
+- Запустить проект и выполнить команду:
+```
+docker compose exec web python manage.py loaddata <фикстура>
+```
+### Автор проекта
+- Решетняк Михаил

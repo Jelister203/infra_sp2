@@ -1,11 +1,11 @@
 FROM python:3.7-slim
 
-RUN mkdir /app
-RUN mkdir /app/api_yamdb
+WORKDIR /app/api_yamdb
 
 COPY requirements.txt /app/api_yamdb
 
 
+RUN python -m pip install --upgrade pip
 RUN pip3 install -r /app/api_yamdb/requirements.txt --no-cache-dir
 
 COPY . /app/api_yamdb
